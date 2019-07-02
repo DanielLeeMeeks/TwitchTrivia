@@ -17,6 +17,17 @@ public class uiManager : MonoBehaviour {
 		
 	}
 
+    public void showCorrectAnswer(questionObj q) {
+        answerBackground[0].color = Color.grey;
+        answerBackground[1].color = Color.grey;
+        answerBackground[2].color = Color.grey;
+        answerBackground[3].color = Color.grey;
+        answerBackground[q.correct_answer_id].color = Color.yellow;
+        answerText[q.correct_answer_id].color = Color.black;
+        footerText = "The correct answer is \""+q.answers_letters[q.correct_answer_id]+". "+q.answers[q.correct_answer_id]+"\"";
+        footer.text = footerText;
+    }
+
     public void setQuestion(questionObj q) {
         question.text = q.question;
         if (q.type == "boolean")
@@ -46,6 +57,7 @@ public class uiManager : MonoBehaviour {
         }
         footer.text = "<b>Submit your answer now. (30)</b>\n"+footerText;
         Debug.Log(q.correct_answer_id);
+        showCorrectAnswer(q);
     }
 	
 
