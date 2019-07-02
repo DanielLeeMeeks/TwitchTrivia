@@ -5,10 +5,13 @@ using UnityEngine;
 public class questionManager : MonoBehaviour {
 
     questionObj q = new questionObj();
+    uiManager ui;
     string api = "https://opentdb.com/api.php";
 
 	// Use this for initialization
 	void Start () {
+        ui = this.GetComponent<uiManager>();
+
         loadNewQuestion();
 	}
 	
@@ -44,8 +47,11 @@ public class questionManager : MonoBehaviour {
             Debug.Log(wwwString);
             //q = (questionObj)JsonUtility.FromJson(wwwString, typeof(questionObj));
             q = JsonUtility.FromJson<questionObj>(wwwString);
-            Debug.Log(q.incorrect_answers[0]);
+            q.setAnswers();
+            //Debug.Log(q.incorrect_answers[0]);
         }
+
+        ui.setQuestion(q);
 
     }
 }

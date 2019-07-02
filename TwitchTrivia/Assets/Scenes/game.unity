@@ -902,6 +902,7 @@ GameObject:
   - component: {fileID: 826958247}
   - component: {fileID: 826958246}
   - component: {fileID: 826958252}
+  - component: {fileID: 826958253}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -915,7 +916,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 826958245}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36ef97ddf41c2924cb7e5e0d09c8401f, type: 3}
   m_Name: 
@@ -1009,6 +1010,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01292401a386b804f86d408e40bd0650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &826958253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 826958245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b653902fc86ff84ea8eae7d00c14df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  question: {fileID: 758426848}
+  footer: {fileID: 820843220}
+  answerText:
+  - {fileID: 934241228}
+  - {fileID: 376446211}
+  - {fileID: 78066867}
+  - {fileID: 488000785}
+  answerBackground:
+  - {fileID: 1968217516}
+  - {fileID: 982293066}
+  - {fileID: 2092927831}
+  - {fileID: 830277727}
 --- !u!1 &830277725
 GameObject:
   m_ObjectHideFlags: 0
