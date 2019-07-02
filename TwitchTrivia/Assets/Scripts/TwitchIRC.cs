@@ -28,7 +28,7 @@ public class TwitchIRC : MonoBehaviour
 
         //
         //StreamReader inputFile = new StreamReader(Path.Combine(Application.streamingAssetsPath, "twitchLogin.txt"));
-        string [] loginInfo = System.IO.File.ReadAllLines(Path.Combine(Application.streamingAssetsPath, "twitchLogin.txt"));
+        string [] loginInfo = System.IO.File.ReadAllLines(Path.Combine(Application.streamingAssetsPath, "twitchLogin.pass"));
         oauth = loginInfo[9];
         nickName = loginInfo[16];
         channelName = loginInfo[23];
