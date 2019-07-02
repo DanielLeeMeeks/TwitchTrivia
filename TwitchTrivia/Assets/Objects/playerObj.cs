@@ -10,21 +10,24 @@ public class playerObj {
     int answer = -1; //-2=crowd
     int inactive = 0;
 
-    playerObj(string username) { this.username = username; }
+    public playerObj(string username) { this.username = username; }
     playerObj(string username, int score) {
         this.username = username;
         this.score = score;
     }
+
+    public string getUsername() { return username; }
 
     public void cashIn() {
         score = score + bouns;
         bouns = 0;
     }
 
-    public void addScore(int points) { score += points; }
+    public void addScore(int points) { score += points;}
     public int getScore() { return score; }
 
-    public int setBouns() { return bouns; }
+    public void setBonus(int value) { bouns = value; }
+    public int getBouns() { return bouns; }
     public void addBouns() {
         if (bouns == 0)
         {

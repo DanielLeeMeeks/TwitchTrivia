@@ -17,6 +17,11 @@ public class uiManager : MonoBehaviour {
 		
 	}
 
+    public void addToFooter(string text) {
+        footer.text = "<b>"+ text +  "</b>\n" + footerText;
+    }
+    public void replaceFooter(string text) { footer.text = text; }
+
     public void showCorrectAnswer(questionObj q) {
         answerBackground[0].color = Color.grey;
         answerBackground[1].color = Color.grey;
@@ -57,7 +62,6 @@ public class uiManager : MonoBehaviour {
         }
         footer.text = "<b>Submit your answer now. (30)</b>\n"+footerText;
         Debug.Log(q.correct_answer_id);
-        showCorrectAnswer(q);
     }
 	
 

@@ -20,7 +20,7 @@ public class TwitchIRC : MonoBehaviour
 
     public string buffer = string.Empty;
     private bool stopThreads = false;
-    private Queue<string> commandQueue = new Queue<string>();
+    public Queue<string> commandQueue = new Queue<string>();
     private List<string> recievedMsgs = new List<string>();
     public System.Threading.Thread inProc, outProc;
     private void StartIRC()
@@ -82,7 +82,7 @@ public class TwitchIRC : MonoBehaviour
 
                 //foreach (string s in splitMessage){Debug.Log(s);}
 
-                gameLogic.chat(splitMessage[2], xyz[0]);
+                gameLogic.chat(xyz[0], splitMessage[2]);
 
                 lock (recievedMsgs)
                 {
