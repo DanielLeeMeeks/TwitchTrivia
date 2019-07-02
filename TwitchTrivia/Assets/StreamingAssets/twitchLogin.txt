@@ -1,0 +1,24 @@
+--------------------------------------------------------------------------
+---------------- Place you Twitch login information here. ----------------
+--------------------------------------------------------------------------
+
+---- Oauth Token
+(You can get your Oauth token from https://twitchapps.com/tmi/)
+(This line is left blank for future use.)
+(This line is left blank for future use.)
+(This line is left blank for future use.)
+<Oauth Token goes here>
+
+---- Twitch Username
+(This is the username of the Twitch account the game will use
+to talk in chat and read messages.  This account does not have
+to be the same as the channel you will be streamin to, but this
+account should be a mod in that chat.)
+<Twitch Username goes here>
+
+---- Twitch Chat Channel
+(This is the Chat Channel the game will look for answers in.)
+(This line is left blank for future use.)
+(This line is left blank for future use.)
+(This line is left blank for future use.)
+<Twitch Chat Channel goes here>
