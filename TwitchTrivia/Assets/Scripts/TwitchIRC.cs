@@ -146,6 +146,14 @@ public class TwitchIRC : MonoBehaviour
         }
     }
 
+    public void SendMsg(string user, string msg) {
+        SendMsg("@" + user + ", " + msg);
+    }
+
+    public void SendWhisper(string user, string msg) {
+        SendMsg(@"/w " + user + " " + msg);
+    }
+
     //MonoBehaviour Events.
     void Start()
     {
@@ -153,9 +161,10 @@ public class TwitchIRC : MonoBehaviour
     }
     void OnEnable()
     {
-        nickName = PlayerPrefs.GetString("p1Name");
+        //nickName = PlayerPrefs.GetString("p1Name");
         stopThreads = false;
         StartIRC();
+        SendMsg("DanielLeeMeeks", "Hello.");
     }
     void OnDisable()
     {
