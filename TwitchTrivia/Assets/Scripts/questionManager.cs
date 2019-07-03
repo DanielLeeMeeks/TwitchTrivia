@@ -23,7 +23,11 @@ public class questionManager : MonoBehaviour {
     public questionObj getQuestion() { return q; }
 
     public void loadNewQuestion() {
-        loadNewQuestion(1, "", "", "");
+        loadNewQuestion(1, "9", "", "multiple");
+    }
+
+    public void loadNewQuestion(string category) {
+        loadNewQuestion(1, category, "", "multiple");
     }
 
     public void loadNewQuestion(int amount, string category, string difficulty, string type)

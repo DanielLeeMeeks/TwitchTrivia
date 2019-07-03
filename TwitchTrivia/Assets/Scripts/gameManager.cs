@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour {
 
@@ -10,7 +11,12 @@ public class gameManager : MonoBehaviour {
     questionManager qm;
     uiManager ui;
 
+    public string[] categories = new string[] {"", "", "", "", "", "", "", "", "", "General Knowledge", "Entertainment: Books", "Entertainment: Film", "Entertainment: Music", "Entertainment: Musicals & Theatres", "Entertainment: Television", "Entertainment: Video Games", "Entertainment: Board Games", "Science & Nature", "Science: Computers", "Science: Mathematics", "Mythology", "Sports", "Geography", "History", "Politics" , "Art", "Celebrities", "Animals", "Vehicles", "Entertainment: Comics", "Science: Gadgets", "Entertainment: Japanese Anime & Manga", "Entertainment: Cartoon & Animations" };
+    public int categoryID = 9;
+
     public Canvas scoreCanvas;
+    public TextMeshProUGUI scoreFooter;
+
     public Canvas gameCanvas;
 
     public TextMeshProUGUI scoresLeft, scoresRight;
@@ -25,6 +31,10 @@ public class gameManager : MonoBehaviour {
     public int questionsPerRound = 5;
     public int scoresTime = 30;
     int roundNumber;
+
+    public int[] answerCount = new int[4];
+    public int totalAnswers = 0;
+    public RectTransform[] perPan;
 
     public bool votingOpen = false;
     public List<playerObj> players = new List<playerObj>();
@@ -62,7 +72,9 @@ public class gameManager : MonoBehaviour {
             ui.replaceFooter("Waiting for stream lag... (" + tickTime + ")");
         }
         else if (currentStep == steps.answer) {
-            ui.addToFooter("Get ready for the next question... ("+tickTime+")");
+            ui.addToFooter("Get ready for the next question... (" + tickTime + ")");
+        } else if (currentStep == steps.scores) {
+            scoreFooter.text = "Next round category: " + categories[categoryID] + " ("+tickTime+")";
         }
 
     }
@@ -77,8 +89,16 @@ public class gameManager : MonoBehaviour {
         {
             votingOpen = false;
 
+            answerCount = new int[4];
+            totalAnswers = 0;
+
             foreach (playerObj p in players)
             {
+                if (p.getAnswer() >= 0) {
+                    answerCount[p.getAnswer()] += 1;
+                    totalAnswers += 1;
+                }
+
                 if (p.getAnswer() == qm.getQuestion().correct_answer_id)
                 {
                     p.addScore(1);
@@ -95,10 +115,21 @@ public class gameManager : MonoBehaviour {
                 }
             }
 
+            int i = 0;
+            foreach (int per in answerCount)
+            {
+                if (totalAnswers > 0) { 
+                perPan[i].anchorMin = new Vector2((float)answerCount[i] / (float)totalAnswers, 0);
+                }else{
+                    perPan[i].anchorMin = new Vector2(1, 0);
+                }
+                i++;
+            }
+
             currentStep = steps.answer;
             tickTime = answerTime;
             ui.showCorrectAnswer(qm.getQuestion());
-            qm.loadNewQuestion();
+            qm.loadNewQuestion(categoryID.ToString());
         }
         else if (currentStep == steps.answer)
         {
@@ -106,6 +137,8 @@ public class gameManager : MonoBehaviour {
 
             if (roundNumber < 0)
             {
+                categoryID = Random.Range(9, 33);
+                qm.loadNewQuestion();
                 scoreCanvas.enabled = true;
                 gameCanvas.enabled = false;
                 currentStep = steps.scores;
@@ -148,6 +181,7 @@ public class gameManager : MonoBehaviour {
 
             ui.setQuestion(qm.getQuestion());
         } else if (currentStep == steps.scores) {
+
             gameCanvas.enabled = true;
             scoreCanvas.enabled = false;
 
