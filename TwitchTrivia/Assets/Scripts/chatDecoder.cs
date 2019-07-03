@@ -53,6 +53,9 @@ public class chatDecoder : MonoBehaviour {
         if (message.Contains("#5050")) {
             UnityMainThreadDispatcher.Enqueue(() => send5050(username));
         }
+        if (message.Contains("#HELP")) {
+            SendMsg("Type \"#A\", \"#B\", \"#C\", or\"D\" for the answer you think is correct in the chat.  If you get the answer right, you will get 1 point.  The top 20 players will be shown at the end of every round.  To see you score at any time, type \"#score\" in the chat.");
+        }
     }
 
     void send5050(string username) {
