@@ -69,4 +69,22 @@ public class questionObj {
         }
     }
 
+    public string fiftyFifty() {
+
+        int wrongID = -1;
+
+        do {
+            wrongID = UnityEngine.Random.Range(0, 4);
+        } while (wrongID == correct_answer_id);
+
+        if (UnityEngine.Random.Range(0, 2) == 0)
+        {
+            return "The answer to \"" + question + "\" is \"" +  answers[correct_answer_id] + "\" or \"" + answers[wrongID] + "\".";
+        }
+        else {
+
+        }
+        return null;
+    }
+
 }

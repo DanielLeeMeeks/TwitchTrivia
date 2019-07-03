@@ -6,11 +6,13 @@ public class chatDecoder : MonoBehaviour {
 
     gameManager gm;
     TwitchIRC irc;
+    questionManager qm;
 
 	// Use this for initialization
 	void Start () {
         gm = GetComponent<gameManager>();
         irc = GetComponent<TwitchIRC>();
+        qm = GetComponent<questionManager>();
 	}
 
     public void chat(string username, string message) {
@@ -48,6 +50,25 @@ public class chatDecoder : MonoBehaviour {
         if (message.Contains("#SCORE")) {
             SendMsg("@" + username + ", your score is " + gm.findPlayer(username).getScore() + ".");
         }
+        if (message.Contains("#5050")) {
+            UnityMainThreadDispatcher.Enqueue(() => send5050(username));
+        }
+    }
+
+    void send5050(string username) {
+        if (gm.votingOpen)
+        {
+            if (gm.findPlayer(username).useFifty())
+            {
+                SendMsg("@" + username + ", Your 50/50 hint has been whistpered to you.  You have " + gm.findPlayer(username).getFifty() + " 50/50 hints left.");
+                SendMsg("/w " + username + " " + qm.fiftyFifty());
+            }
+            else
+            {
+                SendMsg("@" + username + ", You do not have and 50/50 hints left.  Keep answering questions to earn more.");
+            }
+        }
+        else { SendMsg("@" + username + ", Wait untill voting is open to get a 50/50 hint."); }
     }
 
     void SendMsg(string msg) {

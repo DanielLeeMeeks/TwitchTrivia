@@ -56,4 +56,6 @@ public class questionManager : MonoBehaviour {
         //ui.setQuestion(q);
 
     }
-}
+
+    public string fiftyFifty() { return q.fiftyFifty(); }
+    }

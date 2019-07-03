@@ -55,15 +55,17 @@ public class playerObj {
         fifty += amount;
     }
 
-    public void useFifty() {
+    public int getFifty() { return fifty; }
+
+    public bool useFifty() {
         if (fifty > 0)
         {
             addFifty(-1);
-            //TODO: send whisper to user.
+            return true;
         }
         else
         {
-            //TODO: send whisper saying there are no more fifties.
+            return false;
         }
     }
 
@@ -80,6 +82,10 @@ public class playerObj {
         {
             //TODO: send whisper saying there are no more crowds.
         }
+    }
+
+    public static int SortByScore(playerObj p1, playerObj p2) {
+        return p1.score.CompareTo(p2.score);
     }
 
 }
