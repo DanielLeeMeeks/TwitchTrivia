@@ -56,7 +56,7 @@ public class UnityMainThreadDispatcher : MonoBehaviour {
 	#endif
 	private static void AddDispatcherToScene() {
 		var dispatcherContainer = new GameObject("UnityMainThreadDispatcher");
-		DontDestroyOnLoad(dispatcherContainer);
+		//DontDestroyOnLoad(dispatcherContainer);
 		dispatcherContainer.AddComponent<UnityMainThreadDispatcher>();
 	}
 
