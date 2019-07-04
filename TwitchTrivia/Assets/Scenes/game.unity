@@ -1475,7 +1475,7 @@ MonoBehaviour:
   - 'Entertainment: Cartoon & Animations'
   categoryID: 9
   scoreCanvas: {fileID: 1936635308}
-  scoreFooter: {fileID: 0}
+  scoreFooter: {fileID: 73238396}
   gameCanvas: {fileID: 1881351041}
   scoresLeft: {fileID: 705941897}
   scoresRight: {fileID: 1068054859}

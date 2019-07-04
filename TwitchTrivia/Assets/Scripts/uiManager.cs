@@ -54,7 +54,7 @@ public class uiManager : MonoBehaviour {
             answerPrecent[2].enabled = false;
             answerPrecent[3].enabled = true;
 
-            footerText = "To submit your answer, type #T or #F in the chat.\nTo use 50 / 50, type #5050 in chat.  To trust the crowd, type #crowd in chat.";
+            footerText = "To submit your answer, type #T or #F in the chat.\nType #help for more info.";
         }
         else
         {
@@ -68,7 +68,7 @@ public class uiManager : MonoBehaviour {
             answerPrecent[2].enabled = true;
             answerPrecent[3].enabled = true;
 
-            footerText = "To submit your answer, type #A, #B, #C, or #D in the chat.\nTo use 50 / 50, type #5050 in chat.  To trust the crowd, type #crowd in chat.";
+            footerText = "To submit your answer, type #A, #B, #C, or #D in the chat.\nType #help for more info."; // To use 50 / 50, type #5050 in chat.  To trust the crowd, type #crowd in chat.
         }
 
         int i = 0;
